@@ -1,5 +1,6 @@
 import { apiIniciarSesion } from "@/Api/Inicio/Login";
 import { CircularProgress } from "@mui/material";
+import Image from "next/image";
 import { useState } from "react";
 
 const Login = () => {
@@ -69,7 +70,8 @@ const Login = () => {
     <div className="p-5 flex items-center justify-center bg-gray-100">
       <div className="bg-white rounded-lg shadow-lg flex flex-col md:flex-row w-full max-w-4xl">
         <div className="md:w-1/2 w-full">
-          <img
+          <Image
+          
             src="/images/happy/happy-berry.jpeg"
             alt="Login"
             className="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"

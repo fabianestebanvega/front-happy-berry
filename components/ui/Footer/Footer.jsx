@@ -13,7 +13,10 @@ const Footer = () => {
     return (
       <footer className="text-gray-500 bg-white px-4 py-5 w-full mx-auto md:px-8">
           <div className="max-w-lg sm:mx-auto sm:text-center">
-              <Image src="/images/happy/happy-berry-logo.jpeg" className="w-32 sm:mx-auto" />
+              <Image src="/images/happy/happy-berry-logo.jpeg" 
+              width={100}
+              height={100}
+              className="w-32 sm:mx-auto" />
               <h1 className='text-center font-bold text-gray-900'>Happy Berry</h1>
               <p className="leading-relaxed mt-2 text-[15px]">
               En Happy Berry, nos dedicamos a ofrecerte lo mejor en moda y accesorios. Nuestra misión es brindarte productos de alta calidad que no solo te hagan lucir bien, sino que también te hagan sentir bien. 

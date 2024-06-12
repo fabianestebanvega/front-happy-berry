@@ -1,4 +1,5 @@
-import urlBackend from "../urlBackend";
+import urlBackend from "../UrlBackend";
+
 
 async function apiListadoCategorias(){
     const result=await fetch(urlBackend+"categoria",{
