@@ -1,6 +1,5 @@
+import Image from 'next/image';
 import React from 'react';
-import { Typography, Button, Box, Container, Grid, Link, IconButton } from '@mui/material';
-import { Facebook, Twitter, Instagram, LinkedIn } from '@mui/icons-material';
 
 const Footer = () => {
     const footerNavs = [
@@ -14,7 +13,7 @@ const Footer = () => {
     return (
       <footer className="text-gray-500 bg-white px-4 py-5 w-full mx-auto md:px-8">
           <div className="max-w-lg sm:mx-auto sm:text-center">
-              <img src="/images/happy/happy-berry-logo.jpeg" className="w-32 sm:mx-auto" />
+              <Image src="/images/happy/happy-berry-logo.jpeg" className="w-32 sm:mx-auto" />
               <h1 className='text-center font-bold text-gray-900'>Happy Berry</h1>
               <p className="leading-relaxed mt-2 text-[15px]">
               En Happy Berry, nos dedicamos a ofrecerte lo mejor en moda y accesorios. Nuestra misión es brindarte productos de alta calidad que no solo te hagan lucir bien, sino que también te hagan sentir bien. 
@@ -23,8 +22,8 @@ const Footer = () => {
           <ul className="items-center justify-center mt-8 space-y-5 sm:flex sm:space-x-4 sm:space-y-0">
               {
                   footerNavs.map((item, idx) => (
-                      <li className=" hover:text-gray-800">
-                          <a key={idx} href={item.href}>
+                      <li className=" hover:text-gray-800" key={idx}>
+                          <a  href={item.href}>
                               { item.name }
                           </a>
                       </li>

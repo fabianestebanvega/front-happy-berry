@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import TimerIcon from '@mui/icons-material/Timer';
 import NavLink from "../NavLink";
-import Image from "next/image";
 
 const Banner = () => {
   const [time, setTime] = useState("");
