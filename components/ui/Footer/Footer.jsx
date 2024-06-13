@@ -13,7 +13,7 @@ const Footer = () => {
     return (
       <footer className="text-gray-500 bg-white px-4 py-5 w-full mx-auto md:px-8">
           <div className="max-w-lg sm:mx-auto sm:text-center">
-              <Image src="/images/happy/happy-berry-logo.jpeg" 
+              <Image src="/images/happy/happy-berry-logo.png" 
               width={100}
               height={100}
               className="w-32 sm:mx-auto" />

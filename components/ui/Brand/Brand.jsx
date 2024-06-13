@@ -3,7 +3,7 @@ import Image from "next/image";
 const Brand = ({ ...props }) => (
   <div className="flex items-center space-x-2">
     <Image
-      src="/images/happy/happy-berry-logo.jpeg"
+      src="/images/happy/happy-berry-logo.png"
       alt="Mailgo logo"
       {...props}
       width={70}
