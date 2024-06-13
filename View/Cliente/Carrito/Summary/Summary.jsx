@@ -59,7 +59,7 @@ const Summary = () => {
       );
       setCart(updatedCart);
       setMensaje({
-        texto: "Added item",
+        texto: "Agrego item",
         color: "green",
         icon: <CheckCircleOutlineIcon className="text-green-600" />,
       });
@@ -79,7 +79,7 @@ const Summary = () => {
         );
         setCart(updatedCart);
         setMensaje({
-          texto: "Subtracted item",
+          texto: "Elimino item",
           color: "red",
           icon: <CheckCircleOutlineIcon className="text-red-600" />,
         });
@@ -109,12 +109,12 @@ const Summary = () => {
   const checkout = () => {
     setLoading(true);
     setTimeout(() => {
-      setStep((prevSteps) => ({
-        ...prevSteps,
-        currentStep: 3,
-      }));
+      // setStep((prevSteps) => ({
+      //   ...prevSteps,
+      //   currentStep: 3,
+      // }));
       setLoading(false);
-    }, 500);
+    }, 3000);
   };
 
   return (
