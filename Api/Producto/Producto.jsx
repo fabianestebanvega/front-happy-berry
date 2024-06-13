@@ -1,4 +1,4 @@
-import urlBackend from "../urlBackend";
+import urlBackend from "../UrlBackend";
 
 async function apiListadoArticulos(){
     const result=await fetch(urlBackend+"producto",{
