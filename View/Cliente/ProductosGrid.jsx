@@ -12,10 +12,12 @@ import { motion } from "framer-motion";
 import { apiFetchProductos } from "@/Api/Producto/Producto"; // Asegúrate de tener esta función para obtener los productos
 import { useUserContext } from "@/components/Context/UseContext";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-
+import InfoIcon from "@mui/icons-material/Info";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Link from "next/link";
 const ProductosGrid = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const { productos, cargando, setProductos ,addToCart} = useUserContext();
+  const { productos, cargando, setProductos, addToCart } = useUserContext();
   const [hoveredProduct, setHoveredProduct] = useState(null);
 
   useEffect(() => {
@@ -65,6 +67,7 @@ const ProductosGrid = () => {
                   }}
                   className="shadow-lg"
                 >
+                 
                   <div
                     style={{
                       width: "100%",
@@ -77,7 +80,7 @@ const ProductosGrid = () => {
                   >
                     <img
                       src={producto.imagen}
-                      alt={producto.nombre}
+                      alt={producto.marca}
                       style={{
                         width: "100%",
                         height: "100%",
@@ -86,12 +89,18 @@ const ProductosGrid = () => {
                     />
                   </div>
                   <CardContent style={{ flexGrow: 1 }}>
-                    <Typography variant="h5" component="div" noWrap>
-                      {producto.nombre}
+                    <Typography variant="body2" component="div" noWrap>
+                      <Link href={`/producto/${producto.id}`}>
+                      <InfoIcon className="text-start" /> {producto.marca}
+                      </Link>
+                  
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" noWrap>
+                    <Typography variant="body2" color="textSecondary" gutterBottom>
+              Items: {producto?.cantidad}
+            </Typography>
+                    {/* <Typography variant="body2" color="text.secondary" noWrap>
                       {producto.detalles}
-                    </Typography>
+                    </Typography> */}
                     <div
                       style={{
                         display: "flex",
@@ -108,10 +117,10 @@ const ProductosGrid = () => {
                         {producto.descuento}% OFF
                       </Typography>
                       <Typography variant="h6" component="div">
-                        ${producto.precioVenta}
+                        ${producto.precioVenta.toFixed(2)}
                       </Typography>
                     </div>
-                    
+
                     {producto.envioGratis && (
                       <CardActions disableSpacing>
                         <LocalShippingIcon style={{ color: "green" }} />
@@ -122,29 +131,18 @@ const ProductosGrid = () => {
                     )}
                   </CardContent>
                   {hoveredProduct === producto.id && (
-                   <div className="mt-6 p-3 text-center">
-                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      style={{
-                        position: "absolute",
-                        bottom: "16px",
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                      }}
-                    >
+                    <div className=" text-center">
                       <Button
+                        className="mr-2"
                         variant="outlined"
                         color="success"
-                        onClick={() =>
-                          addToCart(producto)
-                        }
+                        onClick={() => addToCart(producto)}
                       >
-                        Agregar al carrito
+                        <ShoppingCartIcon />
                       </Button>
-                    </motion.div>
-                   </div>
+                    </div>
                   )}
+                  <br />
                 </Card>
               </motion.div>
             </Grid>

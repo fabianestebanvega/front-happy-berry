@@ -1,6 +1,7 @@
 import { apiIniciarSesion } from "@/Api/Inicio/Login";
 import { CircularProgress, Grid, Button, TextField, Typography, Box } from "@mui/material";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 const Login = () => {
@@ -8,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const router=useRouter()
   const handleLogin = (e) => {
     e.preventDefault();
     setIsLoading(true);
@@ -26,7 +27,7 @@ const Login = () => {
           const rol = usuario?.roles[0]?.nombre?.split("_")[1].toLowerCase();
           localStorage.setItem("data", JSON.stringify(usuario));
           localStorage.setItem("modulo", rol);
-          window.location.href = "/" + rol + "/inicio";
+          router.push("/" + rol + "/inicio");
         } else {
           let msg = data?.mensaje;
           if (msg === "Bad credentials") {

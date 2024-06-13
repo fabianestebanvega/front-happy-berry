@@ -128,19 +128,33 @@ const Summary = () => {
           )}
           {items > 0 && cart.length > 0 ? (
             <Grid container spacing={4} padding={2}>
-              <Grid item xs={12} lg={9}>
+              <Grid item xs={12} lg={7}>
                 {cart.map((item) => (
                   <motion.div
                     key={item.id}
-                    className="bg-white mb-4 rounded-lg border p-4 shadow-md flex"
+                    className="bg-white mb-4 rounded-lg gap-x-6 mt-3 border p-4 shadow-md flex "
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
+                   <div>
+                   <Tooltip
+                          title="Delete"
+                          onClick={() => removeItemButton(item.id)}
+                          className="ml-4 cursor-pointer text-red-500 duration-100 hover:bg-red-800 hover:text-white"
+                        >
+                          <IconButton>
+                            <ClearIcon />
+                          </IconButton>
+                        </Tooltip>
+                   </div>
                     <div className="w-1/3">
                       <img
                         src={item.imagen}
+                        width={150}
+                        height={150}
                         alt="product-image"
-                        className="w-full h-full object-cover rounded-lg"
+                        className=" object-cover rounded-lg"
+                        
                       />
                     </div>
                     <div className="ml-4 w-2/3">
@@ -153,7 +167,7 @@ const Summary = () => {
                       </p>
                       <p className="mt-1 text-sm text-gray-900">
                         Descuento:{" "}
-                        <span className="text-red-700 font-bold line-through">
+                        <span className="text-red-700 font-bold ">
                           {parseFloat(item.descuento)} %
                         </span>
                       </p>
@@ -179,25 +193,18 @@ const Summary = () => {
                         >
                           +
                         </span>
-                        <Tooltip
-                          title="Delete"
-                          onClick={() => removeItemButton(item.id)}
-                          className="ml-4 cursor-pointer duration-100 hover:bg-red-500 hover:text-white"
-                        >
-                          <IconButton>
-                            <ClearIcon />
-                          </IconButton>
-                        </Tooltip>
+                        
                       </div>
                       <div className="mt-2 text-sm font-bold text-gray-900">
                         ${parseFloat(item.precioVenta * item.cantidadLlevar).toFixed(2)}
                       </div>
                     </div>
+                    
                   </motion.div>
                 ))}
               </Grid>
-              <Grid item xs={12} lg={3}>
-                <div className="bg-white rounded-lg border p-4 shadow-md">
+              <Grid item xs={12} lg={5}>
+                <div className="bg-white rounded-lg border mt-3 p-4 shadow-md">
                   <div className="mb-2 flex justify-between rounded-md border bg-gray-900 p-2">
                     <div className="flex items-center">
                       <WavingHandIcon className="text-white" />
@@ -258,8 +265,8 @@ const Summary = () => {
                 <Dialog.Close asChild>
                   <Button
                     onClick={deleteItem}
-                    variant="contained"
-                    color="secondary"
+                    variant="outlined"
+                    color="error"
                     fullWidth
                   >
                     Quitar
